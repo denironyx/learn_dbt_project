@@ -19,3 +19,25 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: hello_world
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: film_test
+    columns:
+      - name: rating
+        description: "The primary key for this table"
+        tests:
+          - accepted_values:
+              values: ['NC-17', 'PG-13', 'G', 'R', 'PG']
+
+      - name: language_id
+        tests:
+          - accepted_values:
+              values: [1,2]
+              quote: false

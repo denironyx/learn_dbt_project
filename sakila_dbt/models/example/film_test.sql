@@ -1,0 +1,3 @@
+SELECT *
+FROM
+stg.film
