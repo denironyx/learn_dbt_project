@@ -6,6 +6,8 @@ name: 'sakila_dbt_project'
 version: '1.0.0'
 config-version: 2
 
+vars:
+  cust_id: 10
 # This setting configures which "profile" dbt uses for this project.
 profile: 'sakila_conn'
 
