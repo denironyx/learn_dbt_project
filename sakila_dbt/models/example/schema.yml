@@ -9,7 +9,7 @@ models:
         description: "The primary key for this table"
         tests:
           - unique
-          - not_null
+          - dbt_utils.at_least_one
 
   - name: my_second_dbt_model
     description: "A starter dbt model"
@@ -41,3 +41,26 @@ models:
           - accepted_values:
               values: [1,2]
               quote: false
+      
+  - name: payment_inc
+    columns: 
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+      
+  - name: dim_date_inc
+    columns:
+      - name: date_dim_id
+        description: "The primary key for this table"
+        tests:
+            - unique
+            - not_null
+   
+sources:
+  - name: stg_example
+    database: sakila_wh
+    schema: stg
+    tables:
+      - name: film
+      - name: customer

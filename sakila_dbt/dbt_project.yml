@@ -6,6 +6,7 @@ name: 'sakila_dbt_project'
 version: '1.0.0'
 config-version: 2
 
+# This gives the variable a particular value. Example, in dim_customer you can query customer id greater or less than 10
 vars:
   cust_id: 10
 # This setting configures which "profile" dbt uses for this project.
@@ -26,6 +27,9 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_modules"
 
+# Hooks
+on-run-start: create table if not exists dwh.dbt_log (dbt_id varchar, start_at timestamp, end_at timestamp, status varchar, dbt_total_sec int)
+on-run-end: "{{delete_from_table('my_first_dbt_model')}}"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -38,6 +42,7 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
        materialized: table
+       +schema: examples
     
     dimensions:
        materialized: table

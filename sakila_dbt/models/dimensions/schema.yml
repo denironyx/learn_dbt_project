@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_date
+    columns:
+        - name: date_dim_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+
+  - name: dim_customer
+    columns:
+        - name: customer_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+
+sources:
+  - name: stg
+    database: sakila_wh
+    schema: stg
+    tables:
+      - name: customer
+      - name: address
+      - name: city
+      - name: country   
+      - name: staff  
+      - name: store 

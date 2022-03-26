@@ -1,3 +1,4 @@
 SELECT *
 FROM
-stg.film
+
+{{ source('stg_example', 'film')}}
