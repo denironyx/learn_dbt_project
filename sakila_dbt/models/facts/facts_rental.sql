@@ -1,3 +1,4 @@
+{{ config(materialized='incremental', unique_key='rental_id') }}
 with rental_base as (
 SELECT 
     *,
@@ -98,3 +99,10 @@ SELECT
     dbt_time
 FROM
 rental_base_2
+WHERE 1=1
+
+{% IF is_incremental() %}
+AND update_date::timestamp > (SELECT MAX(update_date) FROM {{this}})
+{% endif %}
+
+-- INTERVAL '10 minutes' 
