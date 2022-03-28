@@ -9,6 +9,14 @@ models:
               - unique
               - not_null
 
+  - name: facts_payment
+    columns:
+        - name: payment_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+
 sources:
   - name: stg
     database: sakila_wh

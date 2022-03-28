@@ -101,8 +101,8 @@ FROM
 rental_base_2
 WHERE 1=1
 
-{% IF is_incremental() %}
-AND update_date::timestamp > (SELECT MAX(update_date) FROM {{this}})
+{% if is_incremental() %}
+AND last_update::timestamp > (SELECT MAX(last_update) - INTERVAL '10 minutes' FROM {{this}})
 {% endif %}
 
 -- INTERVAL '10 minutes' 
