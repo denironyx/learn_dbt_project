@@ -47,3 +47,7 @@ models:
     dimensions:
        materialized: table
        +schema: dwh
+
+    facts:
+       materialized: incremental
+       +schema: dwh

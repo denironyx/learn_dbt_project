@@ -75,4 +75,3 @@ SELECT
     dbt_time
 FROM
  stg_store_2
-     

@@ -1,0 +1,17 @@
+version: 2
+
+
+  - name: fact_rental
+    columns:
+        - name: rental_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+
+sources:
+  - name: stg
+    database: sakila_wh
+    schema: stg
+    tables:
+      - name: rental

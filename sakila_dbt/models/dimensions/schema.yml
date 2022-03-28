@@ -17,6 +17,30 @@ models:
               - unique
               - not_null
 
+  - name: dim_film
+    columns:
+        - name: film_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+
+  - name: dim_store
+    columns:
+        - name: store_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+
+  - name: dim_staff
+    columns:
+        - name: staff_id
+          description: "The primary key for this table"
+          tests:
+              - unique
+              - not_null
+
 sources:
   - name: stg
     database: sakila_wh
@@ -28,3 +52,7 @@ sources:
       - name: country   
       - name: staff  
       - name: store 
+      - name: film
+      - name: language
+      - name: category
+      - name: film_category
