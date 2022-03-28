@@ -6,10 +6,10 @@ SELECT
     EXTRACT(EPOCH from return_date::timestamp) - EXTRACT(EPOCH from rental_date::timestamp) as diff,
     (CASE WHEN
     return_date IS NOT NULL THEN 1 
-    ELSE 0)  AS is_return,,
+    ELSE 0 
+    END)  AS is_return,
     to_char(rental_date::timestamp, 'YYYYMMDD')::integer as date_key,
     '{{ run_started_at.strftime ("%Y %m %d %H:%M:%S") }}'::timestamp as dbt_time 
-
     FROM
     {{ source('stg', 'rental') }}
 

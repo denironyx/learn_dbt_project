@@ -1,7 +1,7 @@
 version: 2
 
-
-  - name: fact_rental
+models:
+  - name: facts_rental
     columns:
         - name: rental_id
           description: "The primary key for this table"
