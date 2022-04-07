@@ -56,3 +56,8 @@ and address.city_id = city.city_id
 
 left join country on 1 = 1
 and country.country_id = city.country_id
+
+
+{% if is_incremental() %}
+AND last_update::timestamp > (SELECT MAX(last_update) - INTERVAL '10 minutes' FROM {{this}})
+{% endif %}

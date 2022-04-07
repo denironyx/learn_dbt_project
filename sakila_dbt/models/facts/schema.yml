@@ -24,3 +24,4 @@ sources:
     tables:
       - name: rental
       - name: inventory
+      - name: payment
